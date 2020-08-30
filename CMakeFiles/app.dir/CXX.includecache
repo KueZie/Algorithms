@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/kuez/Desktop/Projects/Algorithms/HashTable/HashTable.h
+memory
+-
+numeric
+-
+cassert
+-
+HashTableEntry.h
+/home/kuez/Desktop/Projects/Algorithms/HashTable/HashTableEntry.h
+
+/home/kuez/Desktop/Projects/Algorithms/HashTable/HashTableEntry.h
+memory
+-
+
+/home/kuez/Desktop/Projects/Algorithms/main.cpp
+iostream
+-
+string
+-
+HashTable/HashTable.h
+/home/kuez/Desktop/Projects/Algorithms/HashTable/HashTable.h
+
