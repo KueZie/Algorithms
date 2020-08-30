@@ -1,0 +1,6 @@
+*.save
+/_build
+/_install
+CMakeFiles/
+CMakeCache.txt
+Makefile
