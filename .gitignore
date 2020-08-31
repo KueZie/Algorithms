@@ -4,6 +4,7 @@
 /_install
 CMakeFiles/
 CMakeCache.txt
+app
 cmake_install.cmake
 Makefile
 .idea/
