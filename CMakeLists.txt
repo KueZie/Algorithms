@@ -1,13 +1,17 @@
-cmake_minimum_required(VERSION 3.16)
-
+cmake_minimum_required(VERSION 3.17)
 project(Algorithms)
-set(CMAKE_CXX_STANDARD 17)
 
-# Add files to sources
-set(SRC_FILES main.cpp)
+set(CMAKE_CXX_STANDARD 14)
 
-include_directories(${CMAKE_SOURCE_DIR}/HashTable)
+include_directories(HashTable)
 
-add_executable(app ${SRC_FILES})
+add_executable(Algorithms
+        HashTable/HashTable.h
+        HashTable/HashTableEntry.h
+        main.cpp)
 
-# install(TARGETS app DESTINATION bin)
+if(CMAKE_BUILD_TYPE MATCHES Debug)
+    target_compile_definitions(Algorithms PUBLIC DEBUG=1)
+elseif(CMAKE_BUILD_TYPE MATCHES Release)
+    target_compile_definitions(Algorithms PUBLIC DEBUG=0)
+endif()
