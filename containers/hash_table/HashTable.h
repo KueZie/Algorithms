@@ -28,6 +28,10 @@
 //  | Next: nullptr    |
 //  |__________________|
 
+namespace containers
+{
+namespace hash_table
+{
 
 template<typename KeyType, typename DataType, size_t size = 100>
 class HashTable
@@ -122,4 +126,8 @@ private:
   uint32_t DefaultHashCodeGenerator(uint32_t key) const { return key % size; }
   uint32_t DefaultHashCodeGenerator(std::string key) const { return std::accumulate(key.begin(), key.end(), 0) % size; }
   std::array<EntryPtr, size> entries = { nullptr };
-};
+}; // End HashTable
+
+} // End hash_table
+
+} // End data_types

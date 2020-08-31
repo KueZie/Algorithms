@@ -3,6 +3,10 @@
 
 #include <memory>
 
+namespace containers
+{
+namespace hash_table
+{
 template <typename KeyType, typename DataType>
 struct HashTableEntry
 {
@@ -16,4 +20,8 @@ struct HashTableEntry
         data = _data;
         next = _next;
     }
-};
+}; // End HashTableEntry
+
+} // End hash_table
+
+} // End data_types

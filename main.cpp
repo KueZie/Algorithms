@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-#include "HashTable/HashTable.h"
+#include "containers/hash_table/HashTable.h"
 
 struct TestData
 {
@@ -10,7 +10,7 @@ struct TestData
 
 int main(int argv, char** argc)
 {
-    auto table = HashTable<std::string, TestData>();
+    auto table = containers::hash_table::HashTable<std::string, TestData>();
 
     table.Add("Huntego", { .data = "Hunter1" });
     table.Add("Hunter", { .data = "Hunter1" });

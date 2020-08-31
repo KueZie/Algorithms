@@ -3,11 +3,9 @@ project(Algorithms)
 
 set(CMAKE_CXX_STANDARD 14)
 
-include_directories(HashTable)
-
 add_executable(Algorithms
-        HashTable/HashTable.h
-        HashTable/HashTableEntry.h
+        containers/hash_table/HashTable.h
+        containers/hash_table/HashTableEntry.h
         main.cpp)
 
 if(CMAKE_BUILD_TYPE MATCHES Debug)
