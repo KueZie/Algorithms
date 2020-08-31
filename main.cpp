@@ -10,7 +10,7 @@ int main(int argv, char** argc)
     table.Add("Huntego", 69);
     table.Add("Hunter", 10);
 
-    const auto& entry = table.GetEntry("Hunter",);
+    const auto& entry = table.GetEntry("Hunter");
 
     std::cout << (entry == nullptr ? 0 : entry->data) << std::endl;
 
