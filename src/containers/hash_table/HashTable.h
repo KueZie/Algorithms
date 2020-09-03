@@ -7,7 +7,7 @@
 #include "HashTableEntry.h"
 
 #if DEBUG
-#   define DEBUG_LOG(x) std::cout << x
+#   define DEBUG_LOG(x) std::cout << x << std::endl
 #else
 #   define DEBUG_LOG(x)
 #endif
@@ -15,6 +15,10 @@
 // INFO: The actual hash table and it's associated buckets are allocated on the stack.
 //       However, all of the list items in the bucket are just instances of shared_ptr<...> to heap allocated
 //       HashTableEntry instances.
+//
+//       This implementation currently supports numeric and string data types as keys, as well as all data types that are
+//       copyable.
+//
 //   __________________
 //  |    Hash Table    |
 //  |__________________|
@@ -22,7 +26,7 @@
 //  | Next: nullptr    |
 //  |__________________|         __________________          __________________
 //  | Key: "ListItem1" |        | Key: "ListItem2" |        | Key: "ListItem3" |
-//  | Next: ------->   | ---->  | Next: ------->   | ---->  | Next: nullptr    |
+//  | Next: *------>   |        | Next: *------>   |        | Next: nullptr    |
 //  |__________________|        |__________________|        |__________________|
 //  | Key: "TestData3" |
 //  | Next: nullptr    |

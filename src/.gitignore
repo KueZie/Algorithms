@@ -1,10 +1,9 @@
 *.save
 *.cbp
-/_build
-/_install
 CMakeFiles/
 CMakeCache.txt
 app
 cmake_install.cmake
 Makefile
 .idea/
+cmake-debug-build/
