@@ -3,8 +3,11 @@
 #include <memory>
 #include <numeric>
 #include <cassert>
+#include <sstream>
+#include <type_traits>
 
 #include "HashTableEntry.h"
+#include <util/interfaces/interfaces.h>
 
 #if DEBUG
 #   define DEBUG_LOG(x) std::cout << x << std::endl
@@ -38,7 +41,7 @@ namespace hash_table
 {
 
 template<typename KeyType, typename DataType, size_t size = 100>
-class HashTable
+class HashTable : public util::interfaces::IDisplayable
 {
 using Entry = HashTableEntry<KeyType, DataType>;
 using EntryPtr = std::shared_ptr<Entry>;
@@ -54,13 +57,16 @@ public:
 
       // This seems like it can be optimized to not have an if-else
       if (entry != nullptr) {
-          while (entry->next != nullptr)
-              entry = entry->next;
+          EntryPtr tmp = entry;
 
-          entry->next = std::make_shared<Entry>(key, data, nullptr);
+          while (tmp->next != nullptr)
+              tmp = tmp->next;
+
+          tmp->next = std::make_shared<Entry>(key, data, nullptr);
       } else {
           entry = std::make_shared<Entry>(key, data, nullptr);
       }
+
   }
   // Get entry in hash table that matches the given key.
   // CAUTION: Returns a nullptr when an entry with the given key is not found.
@@ -119,6 +125,35 @@ public:
       else
       {
           DEBUG_LOG("Unable to resolve index of HashTable item: `" << key << "`; no items removed.\n");
+      }
+  }
+
+  void Display() const override
+  {
+      std::stringstream output_buffer;
+
+      for (auto it = entries.begin(); it < entries.end(); ++it)
+      {
+          if (*it != nullptr) {
+              EntryPtr entry = *it;
+              output_buffer << it - entries.begin() << ". Key: " << entry->key << "\n";
+
+              int depth = 1; // Represents how many entries deep we are in ->next
+              while (entry->next != nullptr)
+              {
+                  for (int i = 0; i < depth; ++i)
+                      output_buffer << "\t";
+                  output_buffer << "`-----> Key: " << entry->next->key << "\n";
+
+                  // Increment
+                  entry = entry->next;
+                  ++depth;
+              }
+
+              std::cout << output_buffer.str();
+              output_buffer.str("");
+              output_buffer.clear();
+          }
       }
   }
 

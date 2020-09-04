@@ -4,7 +4,7 @@ file(GLOB_RECURSE SOURCES LIST_DIRECTORIES true *.h *.cpp)
 
 set(SOURCES ${SOURCES})
 
-add_executable(${BINARY}_run ${SOURCES})
+add_executable(${BINARY}_run ${SOURCES} util/interfaces/IDisplayable.h util/interfaces/interfaces.h)
 
 if(TESTING)
     target_compile_definitions(${BINARY}_run PUBLIC ENABLE_TESTING)
