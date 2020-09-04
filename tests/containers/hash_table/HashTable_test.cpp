@@ -33,5 +33,12 @@ TEST(HashTableTest, StringDataRetrievableFromKey)
 
 TEST(HashTableTest, ChainRelinkAfterEntryRemoval)
 {
+    containers::hash_table::HashTable<std::uint8_t, const char*, 2> table;
+    table.Add(0, "TestData1");
+    table.Add(2, "TestData2");
+    table.Add(4, "TestData3");
+    table.Remove(2);
 
+    ASSERT_STREQ(table.GetEntry(0)->data, "TestData1");
+    ASSERT_STREQ(table.GetEntry(4)->data, "TestData3");
 }

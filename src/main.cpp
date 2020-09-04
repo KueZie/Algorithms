@@ -18,6 +18,7 @@ int main(int argc, char **argv) {
   table.Add("Hunter", {.data = "Hunter1"});
   table.Add("Huntergogo", {.data = "Hunter1"});
   table.Add("Hunteeeee", {.data = "Hunter2"});
+  table.Remove("Huntego");
   table.Display();
 
   std::cout << std::endl << (table.GetEntry("Huntego") == nullptr ? "nullptr" : table.GetEntry("Huntego")->key) << std::endl;
