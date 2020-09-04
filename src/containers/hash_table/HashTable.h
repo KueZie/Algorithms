@@ -7,13 +7,8 @@
 #include <type_traits>
 
 #include "HashTableEntry.h"
-#include <util/interfaces/interfaces.h>
-
-#if DEBUG
-#   define DEBUG_LOG(x) std::cout << x << std::endl
-#else
-#   define DEBUG_LOG(x)
-#endif
+#include "util/interfaces/interfaces.h"
+#include "util/logging.h"
 
 // INFO: The actual hash table and it's associated buckets are allocated on the stack.
 //       However, all of the list items in the bucket are just instances of shared_ptr<...> to heap allocated
