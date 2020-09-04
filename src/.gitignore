@@ -1,6 +1,7 @@
 *.save
 *.cbp
 CMakeFiles/
+Algorithms
 CMakeCache.txt
 app
 cmake_install.cmake
