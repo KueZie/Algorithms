@@ -14,7 +14,7 @@ struct HashTableEntry
     KeyType           key;
     DataType          data;
     HashTableEntryPtr next; // Used to resolve key conflicts.
-    HashTableEntry(const KeyType& _key, const DataType& _data, const HashTableEntryPtr& _next)
+    HashTableEntry(KeyType _key, DataType _data, HashTableEntryPtr _next)
     {
         key = _key;
         data = _data;

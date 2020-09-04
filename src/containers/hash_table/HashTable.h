@@ -136,14 +136,14 @@ public:
       {
           if (*it != nullptr) {
               EntryPtr entry = *it;
-              output_buffer << it - entries.begin() << ". Key: " << entry->key << "\n";
+              output_buffer << it - entries.begin() << ". Key: " << std::to_string(entry->key) << "\n";
 
               int depth = 1; // Represents how many entries deep we are in ->next
               while (entry->next != nullptr)
               {
                   for (int i = 0; i < depth; ++i)
-                      output_buffer << "\t";
-                  output_buffer << "`-----> Key: " << entry->next->key << "\n";
+                      output_buffer << "\t"; // Add an additional tab for every level we go deep.
+                  output_buffer << "`-----> Key: " << std::to_string(entry->next->key) << "\n"; // Add the data on the line.
 
                   // Increment
                   entry = entry->next;
@@ -158,7 +158,7 @@ public:
   }
 
   EntryPtr operator[](const KeyType& key) { return GetEntry(key); }
-  HashTable& operator=(const HashTable& other) = delete;
+  HashTable& operator=(const HashTable& other) = delete; // Remove copy assignment.
   //HashTable& operator=(HashTable&& other) = delete;
 
 private:
