@@ -1,3 +1,9 @@
+/**
+ * @author Hunter Goram
+ * @date 09/02/2020
+ * @details Implementation of a chaining hash table.
+ */
+
 #pragma once
 
 #include <memory>
@@ -6,28 +12,28 @@
 #include <sstream>
 #include <type_traits>
 
-#include "HashTableEntry.h"
+#include "containers/hash_table/HashTableEntry.h"
 #include "util/interfaces/interfaces.h"
 #include "util/logging.h"
 
-/* INFO: The actual hash table and it's associated buckets are allocated on the stack.
- *        However, all of the list items in the bucket are just instances of shared_ptr<...> to heap allocated
- *        HashTableEntry instances.
+/**  INFO: The actual hash table and it's associated buckets are allocated on the stack.
+ *         However, all of the list items in the bucket are just instances of shared_ptr<...> to heap allocated
+ *         HashTableEntry instances.
  *
- *        This implementation currently supports numeric and string data types as keys, as well as all data types that are
- *        copyable.
+ *         This implementation currently supports numeric and string data types as keys, as well as all data types that are
+ *         copyable.
  *
- *    __________________
- *   |    Hash Table    |
- *   |__________________|
- *   | Key: "TestData1" |
- *   | Next: nullptr    |
- *   |__________________|         __________________          __________________
- *   | Key: "ListItem1" |        | Key: "ListItem2" |        | Key: "ListItem3" |
- *   | Next: *------>   |        | Next: *------>   |        | Next: nullptr    |
- *   |__________________|        |__________________|        |__________________|
- *   | Key: "TestData3" |
- *   | Next: nullptr    |
+ *   __________________
+ *  |    Hash Table    |
+ *  |__________________|
+ *  | Key: "TestData1" |
+ *  | Next: nullptr    |
+ *  |__________________|         __________________          __________________
+ *  | Key: "ListItem1" |        | Key: "ListItem2" |        | Key: "ListItem3" |
+ *  | Next: *------>   |        | Next: *------>   |        | Next: nullptr    |
+ *  |__________________|        |__________________|        |__________________|
+ *  | Key: "TestData3" |
+ *  | Next: nullptr    |
  *  |__________________|
  */
 namespace containers

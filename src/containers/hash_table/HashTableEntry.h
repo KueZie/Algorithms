@@ -1,4 +1,9 @@
-// Header ONLY
+/**
+ * @author Hunter Goram
+ * @date 09/02/2020
+ * @details Defines the entry type used in `HashTable.h`
+ */
+
 #pragma once
 
 #include <memory>
