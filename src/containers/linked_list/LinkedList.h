@@ -6,7 +6,7 @@
 
 #pragma once
 
-//#include <>
+#include <type_traits>
 
 #include "util/logging.h"
 #include "containers/linked_list/LinkedListNode.h"
@@ -34,9 +34,7 @@ public:
         Node* current = std::copy(head);
 
         if (current == nullptr)
-        {
             head = new Node(data);
-        }
 
         // Iterate through the list until the last element is reached.
         while (current->next != nullptr)
@@ -48,15 +46,13 @@ public:
      *
      * @param data
      */
-    void PushBack(T&& data)
+    void PushBack(T&& data) requires (!std::is_lvalue_reference_v<T>) // Prevent binding of lvalues
     {
         Node* current = head;
 
         // Make sure operation on a nullptr don't take place.
         if (current == nullptr)
-        {
             head = new Node(std::move(data));
-        }
 
         // Iterate through the list until the last element is reached.
         while (current->next != nullptr)

@@ -36,9 +36,7 @@
  *  | Next: nullptr    |
  *  |__________________|
  */
-namespace containers
-{
-namespace hash_table
+namespace containers::hash_table
 {
 
 template<typename KeyType, typename DataType, size_t size = 100>
@@ -189,7 +187,5 @@ private:
 
   std::array<EntryPtr, size> entries = { nullptr }; // Contains the entries in buckets or chains.
 }; // End HashTable
-
-} // End hash_table
 
 } // End data_types

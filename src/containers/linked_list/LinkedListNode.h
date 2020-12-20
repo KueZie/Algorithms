@@ -16,7 +16,7 @@ struct UnidirectionalLiskedListNode
     UnidirectionalLiskedListNode() : data(0), next(nullptr) {}
     explicit UnidirectionalLiskedListNode(DataType _data) : data(_data), next(nullptr) {}
     explicit UnidirectionalLiskedListNode(DataType _data, UnidirectionalLiskedListNode<DataType>* _next)
-        : data(0), next(next) {}
+        : data(_data), next(_next) {}
 };
 
 
